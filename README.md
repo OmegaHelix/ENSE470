@@ -2,8 +2,8 @@
 Using agile planning and software development strategies to deliver a solution for HELL's software license management process.
 
 ## Project Map
-- [x] <a href="https://github.com/OmegaHelix/ENSE470/blob/master/ENSE470%20Milestone%201.pptx">Milestone 1 Report Out</a>
-  - <a href="https://github.com/OmegaHelix/ENSE470/blob/master/Current%20VSM.pdf">Current State Value Stream Map </a>
+- [x] <a href="https://github.com/OmegaHelix/ENSE470/blob/master/Milestone1/ENSE470%20Milestone%201.pptx">Milestone 1 Report Out</a>
+  - <a href="https://github.com/OmegaHelix/ENSE470/blob/master/Milestone1/Current%20VSM.pdf">Current State Value Stream Map </a>
   - January 18th, 2018
 - [ ] Milestone 2 Report Out
   - Future State Value Stream Map 
