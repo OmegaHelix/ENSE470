@@ -25,5 +25,6 @@ Using agile planning and software development strategies to deliver a solution f
   - April 12th, 2018
 ## Group Members:
 #### <a href="https://github.com/OmegaHelix"> Dakota Fisher </a>
+- 4th year Software Systems Engineering undergraduate student at the University of Regina
 #### <a href="https://github.com/connor-meredith"> Connor Meredith </a>
 #### <a href="https://github.com/oscar666666"> Chengyu Lou </a>
