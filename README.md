@@ -3,7 +3,7 @@ Using agile planning and software development strategies to deliver a solution f
 
 ## Project Map
 - [x] Milestone 1 
-  - Current State Value Stream Map 
+  - <a href="https://github.com/OmegaHelix/ENSE470/blob/master/ENSE470%20Milestone%201.pptx">Current State Value Stream Map </a>
   - January 18th, 2018
 - [ ] Milestone 2
   - Future State Value Stream Map 
