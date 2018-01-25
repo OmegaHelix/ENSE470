@@ -5,8 +5,8 @@ Using agile planning and software development strategies to deliver a solution f
 - [x] <a href="https://github.com/OmegaHelix/ENSE470/blob/master/Milestone1/ENSE470%20Milestone%201.pptx">Milestone 1 Report Out</a>
   - <a href="https://github.com/OmegaHelix/ENSE470/blob/master/Milestone1/Current%20VSM.pdf">Current State Value Stream Map </a>
   - January 18th, 2018
-- [ ] Milestone 2 Report Out
-  - Future State Value Stream Map 
+- [x] <a href="https://github.com/OmegaHelix/ENSE470/blob/master/Milestone2/Milestone%202.pptx" >Milestone 2 Report Out </a>
+  - <a href="https://github.com/OmegaHelix/ENSE470/blob/master/Milestone2/Future%20State%20VSM.png" >Future State Value Stream Map  </a>
   - January 25th, 2018
 - [ ] Milestone 3 Report Out
   - Story mapping and diagramming activities
