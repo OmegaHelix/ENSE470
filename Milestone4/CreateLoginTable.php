@@ -15,7 +15,7 @@ $sql = "CREATE TABLE Login (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 name VARCHAR(50) NOT NULL,
 password INT NOT NULL,
-access VARCHAR(20),
+access VARCHAR(20)
 )";
 
 if ($conn->query($sql) === TRUE) {
