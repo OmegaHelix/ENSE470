@@ -11,7 +11,7 @@ if ($conn->connect_error) {
 } 
 
 
-$sql = "CREATE TABLE Software (
+$sql = "CREATE TABLE Access (
 userid INT(6) NOT NULL, 
 softwareid INT(6) NOT NULL,
 startdate TIMESTAMP NOT NULL,
