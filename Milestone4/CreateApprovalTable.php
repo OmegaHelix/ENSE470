@@ -14,9 +14,10 @@ if ($conn->connect_error) {
 $sql = "CREATE TABLE Approval (
 userid INT(6) NOT NULL, 
 softwareid INT(6) NOT NULL,
+location VARCHAR(50),
 FOREIGN KEY (userid) REFERENCES Login(id),
 FOREIGN KEY (softwareid) REFERENCES Software(id),
-PRIMARY KEY(userid, softwareid)
+PRIMARY KEY(userid, softwareid, location)
 
 )";
 
