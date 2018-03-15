@@ -14,8 +14,8 @@ Using agile planning and software development strategies to deliver a solution f
 - [x] <a href= "https://github.com/OmegaHelix/ENSE470/blob/master/Milestone4/a4%20-%20Milestone%204%20Report%20Out.pptx" >Milesetone 4 Report Out </a>
   - <a href = "https://github.com/OmegaHelix/ENSE470/blob/master/Milestone4" > Data cleansing, activity diagramming, and lo-fidelity mockups </a>
   - March 1st, 2018
-- [ ] Milestone 5 Report Out
-  - Class relationship diagramming and test scripting
+- [x] <a href="https://github.com/OmegaHelix/ENSE470/blob/master/Milestone5/Milestone5.pptx"> Milestone 5 Report Out </a>
+  - <a href= "https://github.com/OmegaHelix/ENSE470/blob/master/Milestone5/"> Acceptance Test-Driven Development & “Daily” Scrum</a>
   - March 15th, 2018
 - [ ] Milestone 6 Report Out
   - Test validation and project delivery
