@@ -8,8 +8,7 @@
 
 $title = "Request Form";
 require_once("../allusers/header.php");
-require_once("../../../backend/dbscripts/dbconnect.php");
-require_once("../../../backend/dbscripts/commonfunctions.php");
+
 ?>
 <?php $date = getDate();?>   
 
