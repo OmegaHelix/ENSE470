@@ -15,15 +15,17 @@
 <body>
 <ul class="nav nav-inverse nav-tabs">
 <!-- Implement PHP check to see whether logged in or not, as well as who they're logged in as. -->
-  <li role="presentation" class="active"><a href="#">HELL</a></li>
-  <li role="presentation"><a href="#">Create Request</a></li>
-  <li role="presentation"><a href="#">My Requests</a></li>
-  <li role="presentation"><a href="#">My Tasks</a></li>
-  <li role="presentation"><a href="#">Pending Approvals</a></li>
-  <li role="presentation" class= "pull-right"><a href="#">User Profile</a></li>
+  <li role="presentation" class="active"><a href="../softwareuser/form.php">HELL</a></li>
+  <li role="presentation"><a href="../softwareuser/form.php">Create Request</a></li>
+  <li role="presentation"><a href="../softwareuser/requestlist.php">My Requests</a></li>
+  <li role="presentation"><a href="../analyst/analysttasklist.php">My Tasks</a></li>
+  <li role="presentation"><a href="../approver/approvertasklist.php">Pending Approvals</a></li>
+  <li role="presentation" class= "pull-right"><a href="../allusers/signout.php">User Profile</a></li>
 </ul>
 <div style="padding-left:10%; padding-right:10%; padding-top:2%;">
 <?php
+require_once("../../../backend/dbscripts/dbconnect.php");
+require_once("../../../backend/dbscripts/commonfunctions.php");
 /**
  * 
  * The header page is to provide a place to write the header-bar generation

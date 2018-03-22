@@ -5,12 +5,15 @@
  * The form page is to generate the form display for the user.
  * 
  */
+
 $title = "Request Form";
 require_once("../allusers/header.php");
-
+require_once("../../../backend/dbscripts/dbconnect.php");
+require_once("../../../backend/dbscripts/commonfunctions.php");
 ?>
-    
-<form style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" >
+<?php $date = getDate();?>   
+
+<form name="request" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
     <h1 class="text-center"> HELL's Software Access Request</h1>
 
     <br>
@@ -20,52 +23,43 @@ require_once("../allusers/header.php");
         <div class="col-xs-1"></div>
         <div class= "col-xs-4">
             <div class="input-group ">
-                <span class="input-group-addon" id="basic-addon3">Name</span>
-                <input disabled type="text" class="form-control" id="Name" placeholder="Name" aria-describedby="basic-addon3">
+                <span class="input-group-addon" id="name-addon">Name</span>
+                <input  disabled type="text" class="form-control" placeholder="Name" aria-describedby="name-addon">
             </div>
         </div>
         <div class="col-xs-2"></div>
         <div class="col-xs-4">
             <div class="input-group">
-                <span class="input-group-addon" id="basic-addon3">Created on</span>
-                <input disabled type="text" class="form-control" id="DateCreated" placeholder="Date" aria-describedby="basic-addon3">
+                <span class="input-group-addon" id="date-addon">Created on</span>
+                <input disabled type="text" class="form-control" placeholder="Date" value = <?php echo_Date($date);?> aria-describedby="date-addon">
             </div>
         </div>
         <div class="col-xs-1"></div>
     </div>
-<br>
-<br>
-    <div class= "row">
-        <div class="col-xs-1"></div>
-        <div class="col-xs-10">
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon3">Select Software</span>
-                <select class="selectpicker form-control" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true" aria-describedby="basic-addon3">
-                    <option data-tokens="---"> ----- </option>
-                    <!-- generate list of options here -->
-                    <option data-tokens="OMG Operating Map of Gastropathy">Operating Map of Gastropathy (OMG)</option>
-                    <option data-tokens="LOL Limited Operating Liability">Limited Operating Liability (LOL)</option>
-                    <option data-tokens="TMI Total Mastering of Incisions">Total Mastering of Incisions (TMI)</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-xs-1"></div>
-    </div>
-    <br> <br>
-
-        
+    </br>
+    </br>
+    <?php 
+    if(isset($_POST['software']))
+        $software = $_POST['software'];
+    else
+    $software = NULL;
+    generate_software_list($conn, $software);
+    ?>
+    </br> 
+    </br>
     <div class="row">
         <div class="col-xs-1"></div>
         <div class="col-xs-10">
             <div class="input-group">
-                <span class="input-group-addon" id="basic-addon3">Description</span>
-                <textarea multiline=true class="form-control" id="Description" aria-describedby="basic-addon3"></textarea>
+                <span class="input-group-addon" id="description-addon">Description</span>
+                <textarea multiline=true name="description" class="form-control" id="Description" aria-describedby="description-addon"></textarea>
             </div>
         </div>
         <div class="col-xs-1"></div>
     </div>
-
-    <br> <br>
+    <input type="hidden" name="epochdate"value = <?php echo $date[0];?>>
+    <input type="hidden" name="name" class="form-control" id="Name" placeholder="Name" aria-describedby="name-addon">
+            </br> </br>
     <div class="row">
         <div class="col-xs-5"></div>
         <div class="col-xs-2"><button type="submit" class="btn btn-primary">Submit Request</button></div>
@@ -73,4 +67,7 @@ require_once("../allusers/header.php");
     </div>
 
 </form>
-<?php require_once("../allusers/footer.php"); ?>
+<?php 
+    mysqli_close($conn);
+    require_once("../allusers/footer.php"); 
+?>
