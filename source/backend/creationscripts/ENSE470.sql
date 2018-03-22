@@ -70,7 +70,11 @@ CREATE TABLE `software` (
 CREATE TABLE `users` (
   `ID`           int(11) UNSIGNED NOT NULL,
   `username`     varchar(60) NOT NULL,
+  `lastname`     varchar(60) NOT NULL,
+  `middlename`     varchar(60),
+  `firstname`     varchar(60) NOT NULL,
   `password`     varchar(60) NOT NULL,
+  `location`     varchar(60) NOT NULL,
   `accessType`   varchar(20) NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

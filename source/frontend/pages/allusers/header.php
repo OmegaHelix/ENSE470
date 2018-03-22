@@ -22,7 +22,7 @@
   <li role="presentation"><a href="#">Pending Approvals</a></li>
   <li role="presentation" class= "pull-right"><a href="#">User Profile</a></li>
 </ul>
-<div style="padding-left:20%; padding-right:20%; padding-top:1%;">
+<div style="padding-left:10%; padding-right:10%; padding-top:2%;">
 <?php
 /**
  * 
