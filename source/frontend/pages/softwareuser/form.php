@@ -43,9 +43,9 @@ require_once("../allusers/header.php");
                 <select class="selectpicker form-control" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true" aria-describedby="basic-addon3">
                     <option data-tokens="---"> ----- </option>
                     <!-- generate list of options here -->
-                    <option data-tokens="OMG">Operating Map of Gastropathy</option>
-                    <option data-tokens="LOL">LOL: Limited Operating Liability</option>
-                    <option data-tokens="TMI">Total Mastering of Incisions (TMI)</option>
+                    <option data-tokens="OMG Operating Map of Gastropathy">Operating Map of Gastropathy (OMG)</option>
+                    <option data-tokens="LOL Limited Operating Liability">Limited Operating Liability (LOL)</option>
+                    <option data-tokens="TMI Total Mastering of Incisions">Total Mastering of Incisions (TMI)</option>
                 </select>
             </div>
         </div>

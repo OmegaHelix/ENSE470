@@ -41,9 +41,10 @@ CREATE TABLE `approvers` (
 --
 
 CREATE TABLE `requests` (
-  `ID`          int(11) UNSIGNED NOT NULL,
+  `id`          int(11) UNSIGNED NOT NULL,
   `userid`      int(11) UNSIGNED NOT NULL,
   `softwareid`  int(11) UNSIGNED NOT NULL,
+  `status`      VARCHAR(60) NOT NULL DEFAULT 'Awaiting Approval',
   `startdate`   timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `enddate`     timestamp NULL DEFAULT NULL,
   `description` varchar(250) NOT NULL
@@ -56,9 +57,9 @@ CREATE TABLE `requests` (
 --
 
 CREATE TABLE `software` (
-  `ID`         int(11) UNSIGNED NOT NULL,
-  `Acronym`    varchar(20) NOT NULL,
-  `Name`       varchar(60) NOT NULL
+  `id`         int(11) UNSIGNED NOT NULL,
+  `acronym`    varchar(20) NOT NULL,
+  `name`       varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table for storing list of offered software';
 
 -- --------------------------------------------------------
@@ -68,13 +69,13 @@ CREATE TABLE `software` (
 --
 
 CREATE TABLE `users` (
-  `ID`           int(11) UNSIGNED NOT NULL,
+  `id`           int(11) UNSIGNED NOT NULL,
   `username`     varchar(60) NOT NULL,
   `lastname`     varchar(60) NOT NULL,
   `middlename`     varchar(60),
   `firstname`     varchar(60) NOT NULL,
   `password`     varchar(60) NOT NULL,
-  `location`     varchar(60) NOT NULL,
+  `location`     varchar(60) NOT NULL DEFAULT 'Canada',
   `accessType`   varchar(20) NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -86,26 +87,26 @@ CREATE TABLE `users` (
 -- Indexes for table `approvers`
 --
 ALTER TABLE `approvers`
-  ADD KEY `softwareID` (`softwareid`),
-  ADD KEY `userID` (`userid`);
+  ADD KEY `softwareid` (`softwareid`),
+  ADD KEY `userid` (`userid`);
 
 --
 -- Indexes for table `requests`
 --
 ALTER TABLE `requests`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `software`
 --
 ALTER TABLE `software`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -115,19 +116,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `software`
 --
 ALTER TABLE `software`
-  MODIFY `ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -137,16 +138,16 @@ ALTER TABLE `users`
 -- Constraints for table `approvers`
 --
 ALTER TABLE `approvers`
-  ADD CONSTRAINT `approversSoftwareID` FOREIGN KEY (`softwareid`) REFERENCES `software` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `approversUserID` FOREIGN KEY (`userid`) REFERENCES `users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `approversSoftwareid` FOREIGN KEY (`softwareid`) REFERENCES `software` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `approversUserid` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 
 --
 -- Constraints for table `requests`
 --
 ALTER TABLE `requests`
-  ADD CONSTRAINT `requestsSoftwareID` FOREIGN KEY (`softwareid`) REFERENCES `software` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `requestsUserID` FOREIGN KEY (`userid`) REFERENCES `users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `requestsSoftwareid` FOREIGN KEY (`softwareid`) REFERENCES `software` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `requestsUserid` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
