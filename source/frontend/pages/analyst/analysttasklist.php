@@ -22,6 +22,38 @@ require_once("../allusers/header.php");
         </tr>
     </thead>
     <tbody class= "tbody">
+    <form name="task1" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities("../analyst/analysttask.php"); ?>" method="post">
+        <tr>
+            <td>
+                <button type="submit" class = "btn btn-info">REQ123</button>
+            </td>
+            <td>Requester</td>
+            <td>Software Requested</td>
+            <td>
+                <button type="button" class= "btn btn-success">Provision</button>
+            </td>
+            <td>
+                <button type="button" class= "btn btn-danger">Deny</button>
+            </td>
+        </tr>
+        <input type="hidden" name="requestid" value="1">
+    </form>    
+    <form name="task2" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities("../analyst/analysttask.php"); ?>" method="post">
+    <tr>
+        <td>
+            <button href="" class = "btn btn-info">REQ123</button>
+        </td>
+        <td>Requester</td>
+        <td>Software Requested</td>
+        <td>
+            <button class= "btn btn-success">Provision</button>
+        </td>
+        <td>
+            <button class= "btn btn-danger">Deny</button>
+        </td>
+    </tr>
+    </form>
+    <form name="task3" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities("../analyst/analysttask.php"); ?>" method="post">
         <tr>
             <td>
                 <button href="" class = "btn btn-info">REQ123</button>
@@ -35,32 +67,7 @@ require_once("../allusers/header.php");
                 <button class= "btn btn-danger">Deny</button>
             </td>
         </tr>
-        <tr>
-            <td>
-                <button href="" class = "btn btn-info">REQ123</button>
-            </td>
-            <td>Requester</td>
-            <td>Software Requested</td>
-            <td>
-                <button class= "btn btn-success">Provision</button>
-            </td>
-            <td>
-                <button class= "btn btn-danger">Deny</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button href="" class = "btn btn-info">REQ123</button>
-            </td>
-            <td>Requester</td>
-            <td>Software Requested</td>
-            <td>
-                <button class= "btn btn-success">Provision</button>
-            </td>
-            <td>
-                <button class= "btn btn-danger">Deny</button>
-            </td>
-        </tr>
+    </form>
     </tbody>
  <?php
  /**
