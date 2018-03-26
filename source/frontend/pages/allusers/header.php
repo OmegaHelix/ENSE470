@@ -1,5 +1,18 @@
 <?php
 session_start();
+if(!isset($_SESSION['UserName']) && $title != "Login")
+{
+  $username = "notLoggedIn";
+  /**  Uncomment this once done testing to force login page
+   * 	 
+   * header( "refresh:0;url=../allusers/login.php" );
+   * 
+   */
+}
+else
+{
+  $username = $_SESSION['UserName'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +36,7 @@ session_start();
   <li role="presentation"><a href="../softwareuser/requestlist.php">My Requests</a></li>
   <li role="presentation"><a href="../analyst/analysttasklist.php">My Tasks</a></li>
   <li role="presentation"><a href="../approver/approvertasklist.php">Pending Approvals</a></li>
-  <li role="presentation" class= "pull-right"><a href="../allusers/signout.php"><?php echo $_SESSION['UserName'];?><br>sign out</a></li>
+  <li role="presentation" class= "pull-right"><a href="../allusers/signout.php"><?php echo $username?><br>sign out</a></li>
 
 </ul>
 <div style="padding-left:10%; padding-right:10%; padding-top:2%;">
