@@ -10,7 +10,18 @@ $title = "Request Form";
 require_once("../allusers/header.php");
 
 ?>
-<?php $date = getDate();?>   
+<?php $date = getDate();
+$name = $_SESSION['UserName'];
+$query = "SELECT * FROM USERS WHERE username='$username'";
+$firstname = "";
+$lastname ="";
+if($query = mysqli_query($conn, $query)){
+    $user = mysqli_fetch_assoc($query);
+        $firstname = $user['firstname'];
+        $lastname = $user['lastname'];
+        $userid = $user['id'];
+}
+?>  
 
 <form name="request" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
     <h1 class="text-center"> HELL's Software Access Request</h1>
@@ -23,7 +34,7 @@ require_once("../allusers/header.php");
         <div class= "col-xs-4">
             <div class="input-group ">
                 <span class="input-group-addon" id="name-addon">Name</span>
-                <input  disabled type="text" class="form-control" placeholder="Name" aria-describedby="name-addon">
+                <input  disabled type="text" class="form-control" placeholder="Name" value= "<?php echo $firstname , " ", $lastname;?>" aria-describedby="name-addon">
             </div>
         </div>
         <div class="col-xs-2"></div>
@@ -57,11 +68,12 @@ require_once("../allusers/header.php");
         <div class="col-xs-1"></div>
     </div>
     <input type="hidden" name="epochdate"value = <?php echo $date[0];?>>
-    <input type="hidden" name="name" class="form-control" id="Name" placeholder="Name" aria-describedby="name-addon">
+    <input type="hidden" name="name" class="form-control" id="Name" placeholder="Name" value="<?php echo $userid;?>" aria-describedby="name-addon">
             </br> </br>
+
     <div class="row">
         <div class="col-xs-5"></div>
-        <div class="col-xs-2"><button type="submit" class="btn btn-primary">Submit Request</button></div>
+        <div class="col-xs-2"><button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Submit Request</button></div>
         <div class="col-xs-5"></div>
     </div>
 

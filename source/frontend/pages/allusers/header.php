@@ -8,11 +8,55 @@ if(!isset($_SESSION['UserName']) && $title != "Login")
    * header( "refresh:0;url=../allusers/login.php" );
    * 
    */
+
+   
 }
 else
 {
   $username = $_SESSION['UserName'];
+
 }
+  require_once("../../../backend/dbscripts/dbconnect.php");
+  require_once("../../../backend/dbscripts/commonfunctions.php");
+  /**
+   * 
+   * The header page is to provide a place to write the header-bar generation
+   * 
+   */
+  
+  $TaskCount = 0;
+  $PendingCount = 0;
+  $RequestCount = 0;
+  $softwareids = 1;
+  
+  $query = "SELECT * FROM users WHERE username='$username'";
+    
+  if($query = mysqli_query($conn, $query)){
+    $user = mysqli_Fetch_assoc($query);
+      $userid = $user['id'];
+  }
+  $query = "SELECT COUNT(*) FROM requests WHERE userid = '$userid'";
+  
+    if($query = mysqli_query($conn, $query)){
+      $count = mysqli_Fetch_assoc($query);
+        $RequestCount = $count['COUNT(*)'];
+    }
+
+   
+    $query = "SELECT COUNT(*) FROM requests WHERE status='Awaiting Approval' AND softwareid = '$softwareids'";
+    
+      if($query = mysqli_query($conn, $query)){
+        $count = mysqli_Fetch_assoc($query);
+          $PendingCount = $count['COUNT(*)'];
+      }
+   
+      $query = "SELECT COUNT(*) FROM requests WHERE status='Approved'";
+      
+        if($query = mysqli_query($conn, $query)){
+          $count = mysqli_Fetch_assoc($query);
+            $TaskCount = $count['COUNT(*)'];
+        }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,19 +77,22 @@ else
 <!-- Implement PHP check to see whether logged in or not, as well as who they're logged in as. -->
   <li role="presentation" class="active"><a href="../softwareuser/form.php">HELL</a></li>
   <li role="presentation"><a href="../softwareuser/form.php">Create Request</a></li>
-  <li role="presentation"><a href="../softwareuser/requestlist.php">My Requests</a></li>
-  <li role="presentation"><a href="../analyst/analysttasklist.php">My Tasks</a></li>
-  <li role="presentation"><a href="../approver/approvertasklist.php">Pending Approvals</a></li>
-  <li role="presentation" class= "pull-right"><a href="../allusers/signout.php"><?php echo $username?><br>sign out</a></li>
+  <li role="presentation"><a href="../softwareuser/requestlist.php">My Requests <?php if($RequestCount > 0) echo "<button class='btn btn-xs btn-info'>", $RequestCount, '</button>';?></a></li>
+  <li role="presentation"><a href="../analyst/analysttasklist.php">My Tasks <?php if($TaskCount > 0) echo "<button class='btn btn-xs btn-info'>", $TaskCount, '</button>';?></a></li>
+  <li role="presentation"><a href="../approver/approvertasklist.php">Pending Approvals <?php if($PendingCount > 0) echo "<button class='btn btn-xs btn-info'>", $PendingCount, '</button>';?></a></li>
+  <li role="presentation" class="dropdown dropdown-menu-right pull-right">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="presentation" aria-haspopup="true" aria-expanded="false">
+    <?php echo $username?> <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu pull-right " role="presentation">
+      <li role="presentation" class="dropdown-menu-right">
+        <a class="text-center"  href="../allusers/signout.php">sign out</a>
+      </li>
+    </ul>
+  </li>
 
 </ul>
 <div style="padding-left:10%; padding-right:10%; padding-top:2%;">
 <?php
-require_once("../../../backend/dbscripts/dbconnect.php");
-require_once("../../../backend/dbscripts/commonfunctions.php");
-/**
- * 
- * The header page is to provide a place to write the header-bar generation
- * 
- */
+
 ?>
