@@ -48,8 +48,8 @@ if($query = mysqli_query($conn, $query)){
         </div>
         <div class="col-xs-1"></div>
     </div>
-    </br>
-    </br>
+    <br>
+    <br>
     <?php 
     if(isset($_POST['software']))
         $software = $_POST['software'];
@@ -57,8 +57,8 @@ if($query = mysqli_query($conn, $query)){
     $software = NULL;
     generate_software_list($conn, $software);
     ?>
-    </br> 
-    </br>
+    <br> 
+    <br>
     <div class="row">
         <div class="col-xs-1"></div>
         <div class="col-xs-10">
@@ -71,7 +71,8 @@ if($query = mysqli_query($conn, $query)){
     </div>
     <input type="hidden" name="epochdate"value = <?php echo $date[0];?>>
     <input type="hidden" name="name" class="form-control" id="Name" placeholder="Name" value="<?php echo $userid;?>" aria-describedby="name-addon">
-            </br> </br>
+    <br> 
+    <br>
 
     <div class="row">
         <div class="col-xs-5"></div>

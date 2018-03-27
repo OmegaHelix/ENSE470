@@ -27,14 +27,15 @@ else
   $TaskCount = 0;
   $PendingCount = 0;
   $RequestCount = 0;
-  $softwareids = 1;
+  $softwareids = [1, 10, 12];
   
   $query = "SELECT * FROM users WHERE username='$username'";
     
-  if($query = mysqli_query($conn, $query)){
-    $user = mysqli_Fetch_assoc($query);
-      $userid = $user['id'];
-  }
+    if($query = mysqli_query($conn, $query)){
+      $user = mysqli_Fetch_assoc($query);
+        $userid = $user['id'];
+    }
+
   $query = "SELECT COUNT(*) FROM requests WHERE userid = '$userid'";
   
     if($query = mysqli_query($conn, $query)){
@@ -42,25 +43,27 @@ else
         $RequestCount = $count['COUNT(*)'];
     }
 
-   
-    $query = "SELECT COUNT(*) FROM requests WHERE status='Awaiting Approval' AND softwareid = '$softwareids'";
-    
-      if($query = mysqli_query($conn, $query)){
-        $count = mysqli_Fetch_assoc($query);
-          $PendingCount = $count['COUNT(*)'];
-      }
-   
-      $query = "SELECT COUNT(*) FROM requests WHERE status='Approved'";
-      
-        if($query = mysqli_query($conn, $query)){
-          $count = mysqli_Fetch_assoc($query);
-            $TaskCount = $count['COUNT(*)'];
-        }
-    $query = "SELECT * FROM users WHERE id= '$userid'";
+   $softwareids = implode(',', $softwareids);
+  $query = "SELECT COUNT(*) FROM requests WHERE status='Awaiting Approval' AND softwareid IN ($softwareids)";
+  
     if($query = mysqli_query($conn, $query)){
-      $user = mysqli_Fetch_assoc($query);
-        $access = $user['accessType'];
+      $count = mysqli_Fetch_assoc($query);
+        $PendingCount = $count['COUNT(*)'];
     }
+  
+  $query = "SELECT COUNT(*) FROM requests WHERE status='Approved'";
+  
+    if($query = mysqli_query($conn, $query)){
+      $count = mysqli_Fetch_assoc($query);
+        $TaskCount = $count['COUNT(*)'];
+    }
+    
+  $query = "SELECT * FROM users WHERE id= '$userid'";
+  
+  if($query = mysqli_query($conn, $query)){
+    $user = mysqli_Fetch_assoc($query);
+      $access = $user['accessType'];
+  }
 
 ?>
 <!DOCTYPE html>
