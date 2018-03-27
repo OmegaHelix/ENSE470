@@ -56,6 +56,11 @@ else
           $count = mysqli_Fetch_assoc($query);
             $TaskCount = $count['COUNT(*)'];
         }
+    $query = "SELECT * FROM users WHERE id= '$userid'";
+    if($query = mysqli_query($conn, $query)){
+      $user = mysqli_Fetch_assoc($query);
+        $access = $user['accessType'];
+    }
 
 ?>
 <!DOCTYPE html>
@@ -73,13 +78,21 @@ else
  <title><?php echo $title;?></title>
 </head>
 <body>
-<ul class="nav nav-inverse nav-tabs">
+<ul class="nav nav-pills">
 <!-- Implement PHP check to see whether logged in or not, as well as who they're logged in as. -->
-  <li role="presentation" class="active"><a href="../softwareuser/form.php">HELL</a></li>
-  <li role="presentation"><a href="../softwareuser/form.php">Create Request</a></li>
-  <li role="presentation"><a href="../softwareuser/requestlist.php">My Requests <?php if($RequestCount > 0) echo "<button class='btn btn-xs btn-info'>", $RequestCount, '</button>';?></a></li>
-  <li role="presentation"><a href="../analyst/analysttasklist.php">My Tasks <?php if($TaskCount > 0) echo "<button class='btn btn-xs btn-info'>", $TaskCount, '</button>';?></a></li>
-  <li role="presentation"><a href="../approver/approvertasklist.php">Pending Approvals <?php if($PendingCount > 0) echo "<button class='btn btn-xs btn-info'>", $PendingCount, '</button>';?></a></li>
+  <li role="presentation"><a href="../softwareuser/form.php">HELL</a></li>
+  <?php
+  if($access == "user" || $access == "approver" || $access == "analyst" || $access == "analyst approver")
+  {
+      echo ' <li role="presentation" ';
+      if($title == "Request Form") echo "class='active'";
+      echo '><a href="../softwareuser/form.php">Create Request</a></li>';
+  } 
+  ?>
+  
+  <li role="presentation" <?php if($title == "My Requests") echo "class='active'";?>><a href="../softwareuser/requestlist.php">My Requests <?php if($RequestCount > 0) echo "<button class='btn btn-xs btn-info'>", $RequestCount, '</button>';?></a></li>
+  <li role="presentation" <?php if($title == "My Tasks") echo "class='active'";?> ><a href="../analyst/analysttasklist.php">My Tasks <?php if($TaskCount > 0) echo "<button class='btn btn-xs btn-info'>", $TaskCount, '</button>';?></a></li>
+  <li role="presentation"<?php if($title == "Pending Approvals") echo "class='active'";?> ><a href="../approver/approvertasklist.php">Pending Approvals <?php if($PendingCount > 0) echo "<button class='btn btn-xs btn-info'>", $PendingCount, '</button>';?></a></li>
   <li role="presentation" class="dropdown dropdown-menu-right pull-right">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="presentation" aria-haspopup="true" aria-expanded="false">
     <?php echo $username?> <span class="caret"></span>
