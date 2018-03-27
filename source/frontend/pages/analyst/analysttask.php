@@ -1,15 +1,39 @@
 <?php
-
+    require_once('../allusers/header.php');
 /**
  * 
  * The analyst task  page is the page they'll see when they click on an assigned task.
  * 
  */
 if(isset($_POST['Provision']))
-{echo "Provisioned";}
+{
+    if(isset($_POST['requestid']))
+    {
+        $requestid = $_POST['requestid'];
+        $query = "UPDATE requests SET status = 'Analyst Provisioned' WHERE id = '$requestid'";
+        if($result = mysqli_query($conn, $query))
+        {
+            header("refresh:0;url=../analyst/analysttasklist.php"); 
+            exit();
+        }
+    }
+}
+    
+    
 
 else if(isset($_POST['Deny']))
-{echo "Rejected";}
+{
+    if(isset($_POST['requestid']))
+    {
+        $requestid = $_POST['requestid'];
+        $query = "UPDATE requests SET status = 'Analyst Denied' WHERE id = '$requestid'";
+        if($result = mysqli_query($conn, $query))
+        {
+            header("refresh:0;url=../analyst/analysttasklist.php"); 
+            exit();
+        }
+    }
+}
 else{
 if(!isset($_POST['requestid']))
 {
@@ -19,7 +43,7 @@ if(!isset($_POST['requestid']))
     exit();   
 }
 
-require_once('../allusers/header.php');
+
 
 $requestid = $_POST['requestid'];
 
@@ -88,7 +112,8 @@ generate_software_list($conn, $software, "disabled");
     </div>
     <div class="col-xs-1"></div>
 </div>
-<input type="hidden" name="epochdate"value = <?php echo $date[0];?>>
+<input type="hidden" name="epochdate" value = <?php echo $date[0];?>>
+<input type="hidden" name="requestid" value = <?php echo $requestid;?>>
 <input type="hidden" name="name" class="form-control" id="Name" placeholder="Name" value="<?php echo $userid;?>" aria-describedby="name-addon">
 <br> 
 <br>
@@ -105,7 +130,7 @@ generate_software_list($conn, $software, "disabled");
 <?php 
 
 mysqli_close($conn);
-
-require_once("../allusers/footer.php"); 
 }
+require_once("../allusers/footer.php"); 
+
 ?>
