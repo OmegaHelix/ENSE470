@@ -22,7 +22,7 @@ function echo_date($date)
  * 
  * 
  */
-function generate_software_list($conn, $selected)
+function generate_software_list($conn, $selected, $interaction)
 {
 ?>
  <div class= "row">
@@ -30,7 +30,7 @@ function generate_software_list($conn, $selected)
         <div class="col-xs-10">
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon3">Select Software</span>
-                <select class="selectpicker form-control" 
+                <select class="selectpicker form-control" <?php echo $interaction;?>
                 name="software"data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true" aria-describedby="basic-addon3">
                     <option value="none" data-tokens="---"> ----- </option>
                     <!-- generate list of options here -->

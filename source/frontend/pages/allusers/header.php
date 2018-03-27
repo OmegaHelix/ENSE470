@@ -65,6 +65,11 @@ else
       $access = $user['accessType'];
   }
 
+  if(isset($_POST['requestid']))
+  {
+    $title = "Request " . $_POST['requestid'];
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

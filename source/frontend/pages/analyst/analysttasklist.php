@@ -36,7 +36,7 @@ require_once("../allusers/header.php");
                 <button type="button" class= "btn btn-danger">Deny</button>
             </td>
         </tr>
-        <input type="hidden" name="requestid" value="1">
+        <input type="hidden" name="requestid" value="17">
     </form>    
     <form name="task2" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities("../analyst/analysttask.php"); ?>" method="post">
     <tr>
