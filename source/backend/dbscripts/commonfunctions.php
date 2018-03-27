@@ -32,7 +32,7 @@ function generate_software_list($conn, $selected)
                 <span class="input-group-addon" id="basic-addon3">Select Software</span>
                 <select class="selectpicker form-control" 
                 name="software"data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true" aria-describedby="basic-addon3">
-                    <option data-tokens="---"> ----- </option>
+                    <option value="none" data-tokens="---"> ----- </option>
                     <!-- generate list of options here -->
 <?php 
     $sql = "SELECT * FROM software";
