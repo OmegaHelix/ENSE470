@@ -76,7 +76,7 @@ if($query = mysqli_query($conn, $query)){
         $software = $_POST['software'];
     else
     $software = NULL;
-    generate_software_list($conn, $software);
+    generate_software_list($conn, $software,NULL);
     ?>
     <br> 
     <br>

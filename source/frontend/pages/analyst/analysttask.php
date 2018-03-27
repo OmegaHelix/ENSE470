@@ -8,7 +8,7 @@
 if(isset($_POST['Provision']))
 {echo "Provisioned";}
 
-else if(isset($_POST['Reject']))
+else if(isset($_POST['Deny']))
 {echo "Rejected";}
 else{
 if(!isset($_POST['requestid']))
@@ -97,7 +97,7 @@ generate_software_list($conn, $software, "disabled");
     <div class="col-xs-3"></div>
     <div class="col-xs-2"><button name= "Provision" value="Provision" type="submit" class="btn btn-success btn-lg" style="width:100%;">Provision</button></div>
     <div class="col-xs-2"></div>
-    <div class="col-xs-2"><button name="Reject" value="Reject" type="submit" class="btn btn-danger btn-lg" style="width:100%;">Reject</button></div>
+    <div class="col-xs-2"><button name="Deny" value="Deny" type="submit" class="btn btn-danger btn-lg" style="width:100%;">Deny</button></div>
     <div class="col-xs-3"></div>
 </div>
 
