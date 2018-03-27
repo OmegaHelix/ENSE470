@@ -27,14 +27,15 @@ else
   $TaskCount = 0;
   $PendingCount = 0;
   $RequestCount = 0;
-  $softwareids = 1;
+  $softwareids = [1, 10, 12];
   
   $query = "SELECT * FROM users WHERE username='$username'";
     
-  if($query = mysqli_query($conn, $query)){
-    $user = mysqli_Fetch_assoc($query);
-      $userid = $user['id'];
-  }
+    if($query = mysqli_query($conn, $query)){
+      $user = mysqli_Fetch_assoc($query);
+        $userid = $user['id'];
+    }
+
   $query = "SELECT COUNT(*) FROM requests WHERE userid = '$userid'";
   
     if($query = mysqli_query($conn, $query)){
@@ -42,25 +43,27 @@ else
         $RequestCount = $count['COUNT(*)'];
     }
 
-   
-    $query = "SELECT COUNT(*) FROM requests WHERE status='Awaiting Approval' AND softwareid = '$softwareids'";
-    
-      if($query = mysqli_query($conn, $query)){
-        $count = mysqli_Fetch_assoc($query);
-          $PendingCount = $count['COUNT(*)'];
-      }
-   
-      $query = "SELECT COUNT(*) FROM requests WHERE status='Approved'";
-      
-        if($query = mysqli_query($conn, $query)){
-          $count = mysqli_Fetch_assoc($query);
-            $TaskCount = $count['COUNT(*)'];
-        }
-    $query = "SELECT * FROM users WHERE id= '$userid'";
+   $softwareids = implode(',', $softwareids);
+  $query = "SELECT COUNT(*) FROM requests WHERE status='Awaiting Approval' AND softwareid IN ($softwareids)";
+  
     if($query = mysqli_query($conn, $query)){
-      $user = mysqli_Fetch_assoc($query);
-        $access = $user['accessType'];
+      $count = mysqli_Fetch_assoc($query);
+        $PendingCount = $count['COUNT(*)'];
     }
+  
+  $query = "SELECT COUNT(*) FROM requests WHERE status='Approved'";
+  
+    if($query = mysqli_query($conn, $query)){
+      $count = mysqli_Fetch_assoc($query);
+        $TaskCount = $count['COUNT(*)'];
+    }
+    
+  $query = "SELECT * FROM users WHERE id= '$userid'";
+  
+  if($query = mysqli_query($conn, $query)){
+    $user = mysqli_Fetch_assoc($query);
+      $access = $user['accessType'];
+  }
 
 ?>
 <!DOCTYPE html>
@@ -88,11 +91,34 @@ else
       if($title == "Request Form") echo "class='active'";
       echo '><a href="../softwareuser/form.php">Create Request</a></li>';
   } 
-  ?>
   
-  <li role="presentation" <?php if($title == "My Requests") echo "class='active'";?>><a href="../softwareuser/requestlist.php">My Requests <?php if($RequestCount > 0) echo "<button class='btn btn-xs btn-info'>", $RequestCount, '</button>';?></a></li>
-  <li role="presentation" <?php if($title == "My Tasks") echo "class='active'";?> ><a href="../analyst/analysttasklist.php">My Tasks <?php if($TaskCount > 0) echo "<button class='btn btn-xs btn-info'>", $TaskCount, '</button>';?></a></li>
-  <li role="presentation"<?php if($title == "Pending Approvals") echo "class='active'";?> ><a href="../approver/approvertasklist.php">Pending Approvals <?php if($PendingCount > 0) echo "<button class='btn btn-xs btn-info'>", $PendingCount, '</button>';?></a></li>
+  if($access == "user" || $access == "approver" || $access == "analyst" || $access == "analyst approver")
+  {
+      echo '<li role="presentation" ';
+      if($title == "My Requests") echo "class='active'";
+      echo '><a href="../softwareuser/requestlist.php">My Requests ';
+      if($RequestCount > 0) echo "<button class='btn btn-xs btn-info'>", $RequestCount, '</button>';
+      echo '</a></li>';
+  }
+
+  if($access == "analyst" || $access == "analyst approver")
+  {
+      echo '<li role="presentation" ';
+      if($title == "My Tasks") echo "class='active'";
+      echo ' ><a href="../analyst/analysttasklist.php">My Tasks ';
+      if($TaskCount > 0) echo "<button class='btn btn-xs btn-info'>", $TaskCount, '</button>';
+      echo '</a></li>';
+  }
+
+  if($access == "approver" || $access == "analyst approver")
+  {
+      echo '<li role="presentation"';
+      if($title == "Pending Approvals") echo "class='active'";
+      echo ' ><a href="../approver/approvertasklist.php">Pending Approvals ';
+      if($PendingCount > 0) echo "<button class='btn btn-xs btn-info'>", $PendingCount, '</button>';
+      echo '</a></li>';
+  }
+?>
   <li role="presentation" class="dropdown dropdown-menu-right pull-right">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="presentation" aria-haspopup="true" aria-expanded="false">
     <?php echo $username?> <span class="caret"></span>
@@ -102,8 +128,7 @@ else
         <a class="text-center"  href="../allusers/signout.php">sign out</a>
       </li>
     </ul>
-  </li>
-
+  </li> 
 </ul>
 <div style="padding-left:10%; padding-right:10%; padding-top:2%;">
 <?php
