@@ -1,5 +1,6 @@
 <?php
 $title = "My Tasks";
+$pagetype = "myTasks";
 require_once("../allusers/header.php");
 /**
  * 
@@ -30,13 +31,13 @@ require_once("../allusers/header.php");
             <td>Requester</td>
             <td>Software Requested</td>
             <td>
-                <button type="button" class= "btn btn-success">Provision</button>
+                <button type="submit" name="Provision" value="Provision" class= "btn btn-success">Provision</button>
             </td>
             <td>
-                <button type="button" class= "btn btn-danger">Deny</button>
+                <button type="submit" name="Deny" value="Deny"class= "btn btn-danger">Deny</button>
             </td>
         </tr>
-        <input type="hidden" name="requestid" value="1">
+        <input type="hidden" name="requestid" value="19">
     </form>    
     <form name="task2" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities("../analyst/analysttask.php"); ?>" method="post">
     <tr>

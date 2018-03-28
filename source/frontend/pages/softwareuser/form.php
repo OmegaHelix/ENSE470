@@ -1,5 +1,5 @@
 <?php
-
+$pagetype = "requestform";
 /**
  * 
  * The form page is to generate the form display for the user.
@@ -7,7 +7,28 @@
  *  @todo submit form to database.
  * 
  */
+// if the form is filled out properly
+ if(isset($_POST['name']) && isset($_POST['software']) && $_POST['software'] != "none")
+ {
+    require_once("../../../backend/dbscripts/dbconnect.php");
+     $userid = $_POST['name'];
+     $softwareid=$_POST['software'];
+     $date = $_POST['epochdate'];
+     $description = $_POST['description'];
+     $query = "SELECT * FROM requests WHERE userid = '$userid' AND softwareid = '$softwareid'";
+     if($query = mysqli_query($conn, $query))
+            if($query->num_rows > 0){
+                header( "refresh:0;url=../softwareuser/requestlist.php");
+                exit();
+            }
+     else{
+    $query = " INSERT INTO requests (userid,softwareid,description) VALUES ('$userid', '$softwareid', '$description')";
+    if($query = mysqli_query($conn, $query))
+            header( "refresh:0;url=../softwareuser/requestlist.php");
+     }
 
+ }
+else {
 $title = "Request Form";
 require_once("../allusers/header.php");
 
@@ -55,7 +76,7 @@ if($query = mysqli_query($conn, $query)){
         $software = $_POST['software'];
     else
     $software = NULL;
-    generate_software_list($conn, $software);
+    generate_software_list($conn, $software,NULL);
     ?>
     <br> 
     <br>
@@ -84,4 +105,5 @@ if($query = mysqli_query($conn, $query)){
 <?php 
     mysqli_close($conn);
     require_once("../allusers/footer.php"); 
+}
 ?>
