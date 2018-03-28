@@ -22,21 +22,21 @@ require_once("../allusers/header.php");
  * 
  */
 ?>
- <table  class='table table-striped table-hover'>
+ <table  class='table text-center table-striped table-hover'>
     <thead class= "thead thead-light">
         <tr>
-            <th>Request #</th>
-            <th>Requester</th>
-            <th>Software Requested</th>
-            <th></th>
-            <th></th>
+            <th class="text-center">Request #</th>
+            <th class="text-center">Requester</th>
+            <th class="text-center">Software Requested</th>
+            <th class="text-center"></th>
+            <th class="text-center"></th>
         </tr>
     </thead>
     <tbody class= "tbody">
     <form name="task1" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities("../approver/approvertask.php"); ?>" method="post">
         <tr>
             <td>
-                <button type="submit" class = "btn btn-info">REQ123</button>
+                <button type="submit" class = "btn btn-info">Request 123</button>
             </td>
             <td>Requester</td>
             <td>Software Requested</td>
@@ -47,7 +47,7 @@ require_once("../allusers/header.php");
                 <button type="submit" name="Deny" value="Deny"class= "btn btn-danger">Deny</button>
             </td>
         </tr>
-        <input type="hidden" name="requestid" value="19">
+        <input type="hidden" name="requestid" value="21">
     </form>    
     <form name="task2" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities("../approver/approvertask.php"); ?>" method="post">
     <tr>

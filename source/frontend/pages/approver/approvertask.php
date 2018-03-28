@@ -83,8 +83,12 @@ if($query = mysqli_query($conn, $query))
 
 
 <form name="request" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-<h1 class="text-center">Task #<?php echo $requestid;?></h1>
-
+<div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-1"><a href="approvertasklist.php" role="button" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left"></span>Return</a></div>
+    <div class="col-xs-8"><h1 class="text-center">Task #<?php echo $requestid;?></h1></div>
+    <div class="col-xs-2"></div>
+</div>
 <br>
 <br>
 
