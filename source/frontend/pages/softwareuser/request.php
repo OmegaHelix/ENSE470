@@ -30,7 +30,7 @@ if(!isset($_POST['requestid']))
 {
     echo "<script type='text/javascript'> alert('Request not found, returning to task list.')     
     </script>";
-    header("refresh:1;url=../analyst/analysttasklist.php");    
+    header("refresh:1;url=../softwareuser/requestlist.php");    
     exit();   
 }
 
@@ -63,7 +63,9 @@ if($query = mysqli_query($conn, $query))
 
 
 <form name="request" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+<div class="col-xs-1"><a href="requestlist.php" role="button" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left"></span>Return</a></div>
 <h1 class="text-center">Request #<?php echo $requestid;?></h1>
+<div class="col-xs-1"></div>
 
 <br>
 <br>
