@@ -22,7 +22,7 @@ if(isset($_POST['Approve']))
     if(isset($_POST['requestid']))
     {
         $requestid = $_POST['requestid'];
-        $query = "UPDATE requests SET status = 'Approver Approved' WHERE id = '$requestid' AND status='pending'";
+        $query = "UPDATE requests SET status = 'Approver Approved' WHERE id = '$requestid' AND status='Awaiting Approval'";
         if($result = mysqli_query($conn, $query))
         {
             header("refresh:0;url=../approver/approvertasklist.php"); 
@@ -38,7 +38,7 @@ else if(isset($_POST['Deny']))
     if(isset($_POST['requestid']))
     {
         $requestid = $_POST['requestid'];
-        $query = "UPDATE requests SET status = 'Approver Denied' WHERE id = '$requestid' AND status='pending'";
+        $query = "UPDATE requests SET status = 'Approver Denied' WHERE id = '$requestid' AND status='Awaiting Approval'";
         if($result = mysqli_query($conn, $query))
         {
             header("refresh:0;url=../analyst/analysttasklist.php"); 

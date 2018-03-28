@@ -21,22 +21,35 @@ else
   $TaskCount = 0;
   $PendingCount = 0;
   $RequestCount = 0;
-  $softwareids = [1, 10, 12];
-  
   $query = "SELECT * FROM users WHERE username='$username'";
     
     if($query = mysqli_query($conn, $query)){
       $user = mysqli_Fetch_assoc($query);
         $userid = $user['id'];
+      $userlocation = $user['location'];
     }
-
+  $query = "SELECT * FROM approvers WHERE userid = '$userid'";
+  $softwareids = array();
+    if($query = mysqli_query($conn, $query)){
+      while($approver = mysqli_Fetch_assoc($query))
+    {
+      // if user has Canada domain, they have approval access over all of canada for that software.
+      $userlocation = explode(',',$userlocation);
+      foreach($userlocation as $userlocationelement)
+      {
+      if($approver['location'] == "Canada" || strpos($approver['location'], $userlocationelement) !== False)
+      {
+        array_push($softwareids, $approver['softwareid']);   
+      }
+    }
+  }
+}
   $query = "SELECT COUNT(*) FROM requests WHERE userid = '$userid'";
   
     if($query = mysqli_query($conn, $query)){
       $count = mysqli_Fetch_assoc($query);
         $RequestCount = $count['COUNT(*)'];
     }
-
    $softwareids = implode(',', $softwareids);
   $query = "SELECT COUNT(*) FROM requests WHERE status='Awaiting Approval' AND softwareid IN ($softwareids)";
   
@@ -64,7 +77,7 @@ else
     $title = "Task " . $_POST['requestid'];
   }
 
-  if(isset($_POST['requestid']) && $pagetype == "RequestPage")
+  if(isset($_POST['requestid']) && ($pagetype == "RequestPage") || $pagetype == "Request" )
   {
     $title = "Request " . $_POST['requestid'];
   }
@@ -91,14 +104,14 @@ else
   if($access == "user" || $access == "approver" || $access == "analyst" || $access == "approver analyst")
   {
       echo ' <li role="presentation" ';
-      if($title == "Request Form") echo "class='active'";
+      if($title == "Request Form"|| $pagetype == "requestform") echo "class='active'";
       echo '><a href="../softwareuser/form.php">Create Request</a></li>';
   } 
   
   if($access == "user" || $access == "approver" || $access == "analyst" || $access == "approver analyst")
   {
       echo '<li role="presentation" ';
-      if($pagetype == "myRequests") echo "class='active'";
+      if($pagetype == "myRequests" || $pagetype == "Request") echo "class='active'";
       echo '><a href="../softwareuser/requestlist.php">My Requests ';
       if($RequestCount > 0) echo "<button class='btn btn-xs btn-info'>", $RequestCount, '</button>';
       echo '</a></li>';

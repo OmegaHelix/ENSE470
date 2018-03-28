@@ -7,26 +7,11 @@
  */
 ?>
 
-
-<?
-
-/**
- * 
- * The approver task  page is the page they'll see when they click on an assigned task.
- * 
- */
-?>
-
-
 <?php
     $title= "Request";
     $pagetype= "Request";
     require_once('../allusers/header.php');
-/**
- * 
- * The analyst task  page is the page they'll see when they click on an assigned task.
- * 
- */
+
 if(isset($_POST['Cancel']))
 {
     if(isset($_POST['requestid']))
@@ -78,7 +63,7 @@ if($query = mysqli_query($conn, $query))
 
 
 <form name="request" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-<h1 class="text-center">Task #<?php echo $requestid;?></h1>
+<h1 class="text-center">Request #<?php echo $requestid;?></h1>
 
 <br>
 <br>
