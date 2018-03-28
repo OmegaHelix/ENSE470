@@ -2,14 +2,8 @@
 session_start();
 if(!isset($_SESSION['UserName']) && $title != "Login")
 {
-  $username = "notLoggedIn";
-  /**  Uncomment this once done testing to force login page
-   * 	 
-   * header( "refresh:0;url=../allusers/login.php" );
-   * 
-   */
-
-   
+  $username = "notLoggedIn";  	 
+   header( "refresh:0;url=../allusers/login.php" );
 }
 else
 {
@@ -65,7 +59,12 @@ else
       $access = $user['accessType'];
   }
 
-  if(isset($_POST['requestid']))
+  if(isset($_POST['requestid']) && $pagetype == "TaskPage")
+  {
+    $title = "Task " . $_POST['requestid'];
+  }
+
+  if(isset($_POST['requestid']) && $pagetype == "RequestPage")
   {
     $title = "Request " . $_POST['requestid'];
   }
@@ -87,38 +86,37 @@ else
 </head>
 <body>
 <ul class="nav nav-pills">
-<!-- Implement PHP check to see whether logged in or not, as well as who they're logged in as. -->
   <li role="presentation"><a href="../softwareuser/form.php">HELL</a></li>
   <?php
-  if($access == "user" || $access == "approver" || $access == "analyst" || $access == "analyst approver")
+  if($access == "user" || $access == "approver" || $access == "analyst" || $access == "approver analyst")
   {
       echo ' <li role="presentation" ';
       if($title == "Request Form") echo "class='active'";
       echo '><a href="../softwareuser/form.php">Create Request</a></li>';
   } 
   
-  if($access == "user" || $access == "approver" || $access == "analyst" || $access == "analyst approver")
+  if($access == "user" || $access == "approver" || $access == "analyst" || $access == "approver analyst")
   {
       echo '<li role="presentation" ';
-      if($title == "My Requests") echo "class='active'";
+      if($pagetype == "myRequests") echo "class='active'";
       echo '><a href="../softwareuser/requestlist.php">My Requests ';
       if($RequestCount > 0) echo "<button class='btn btn-xs btn-info'>", $RequestCount, '</button>';
       echo '</a></li>';
   }
 
-  if($access == "analyst" || $access == "analyst approver")
+  if($access == "analyst" || $access == "approver analyst")
   {
       echo '<li role="presentation" ';
-      if($title == "My Tasks") echo "class='active'";
+      if($pagetype == "myTasks") echo "class='active'";
       echo ' ><a href="../analyst/analysttasklist.php">My Tasks ';
       if($TaskCount > 0) echo "<button class='btn btn-xs btn-info'>", $TaskCount, '</button>';
       echo '</a></li>';
   }
 
-  if($access == "approver" || $access == "analyst approver")
+  if($access == "approver" || $access == "approver analyst")
   {
       echo '<li role="presentation"';
-      if($title == "Pending Approvals") echo "class='active'";
+      if($pagetype == "pendingapprovals") echo "class='active'";
       echo ' ><a href="../approver/approvertasklist.php">Pending Approvals ';
       if($PendingCount > 0) echo "<button class='btn btn-xs btn-info'>", $PendingCount, '</button>';
       echo '</a></li>';

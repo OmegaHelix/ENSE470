@@ -1,4 +1,6 @@
 <?php
+    $title= "Task";
+    $pagetype= "TaskPage";
     require_once('../allusers/header.php');
 /**
  * 
@@ -10,7 +12,7 @@ if(isset($_POST['Provision']))
     if(isset($_POST['requestid']))
     {
         $requestid = $_POST['requestid'];
-        $query = "UPDATE requests SET status = 'Analyst Provisioned' WHERE id = '$requestid'";
+        $query = "UPDATE requests SET status = 'Analyst Provisioned' WHERE id = '$requestid' AND status='Approved'";
         if($result = mysqli_query($conn, $query))
         {
             header("refresh:0;url=../analyst/analysttasklist.php"); 
@@ -71,7 +73,7 @@ if($query = mysqli_query($conn, $query))
 
 
 <form name="request" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-<h1 class="text-center">Request #<?php echo $requestid;?></h1>
+<h1 class="text-center">Task #<?php echo $requestid;?></h1>
 
 <br>
 <br>
