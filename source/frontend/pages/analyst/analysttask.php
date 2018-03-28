@@ -12,7 +12,7 @@ if(isset($_POST['Provision']))
     if(isset($_POST['requestid']))
     {
         $requestid = $_POST['requestid'];
-        $query = "UPDATE requests SET status = 'Analyst Provisioned' WHERE id = '$requestid' AND status='Approved'";
+        $query = "UPDATE requests SET status = 'Analyst Provisioned' WHERE id = '$requestid' AND status='Approver Approved'";
         if($result = mysqli_query($conn, $query))
         {
             header("refresh:0;url=../analyst/analysttasklist.php"); 
@@ -28,7 +28,7 @@ else if(isset($_POST['Deny']))
     if(isset($_POST['requestid']))
     {
         $requestid = $_POST['requestid'];
-        $query = "UPDATE requests SET status = 'Analyst Denied' WHERE id = '$requestid'";
+        $query = "UPDATE requests SET status = 'Analyst Denied' WHERE id = '$requestid' AND status ='Approver Approved'";
         if($result = mysqli_query($conn, $query))
         {
             header("refresh:0;url=../analyst/analysttasklist.php"); 

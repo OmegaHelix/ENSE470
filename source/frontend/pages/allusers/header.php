@@ -45,7 +45,7 @@ else
         $PendingCount = $count['COUNT(*)'];
     }
   
-  $query = "SELECT COUNT(*) FROM requests WHERE status='Approved'";
+  $query = "SELECT COUNT(*) FROM requests WHERE status='Approver Approved'";
   
     if($query = mysqli_query($conn, $query)){
       $count = mysqli_Fetch_assoc($query);
@@ -107,7 +107,7 @@ else
   if($access == "analyst" || $access == "approver analyst")
   {
       echo '<li role="presentation" ';
-      if($pagetype == "myTasks") echo "class='active'";
+      if($pagetype == "myTasks" ) echo "class='active'";
       echo ' ><a href="../analyst/analysttasklist.php">My Tasks ';
       if($TaskCount > 0) echo "<button class='btn btn-xs btn-info'>", $TaskCount, '</button>';
       echo '</a></li>';
@@ -116,7 +116,7 @@ else
   if($access == "approver" || $access == "approver analyst")
   {
       echo '<li role="presentation"';
-      if($pagetype == "pendingapprovals") echo "class='active'";
+      if($pagetype == "pendingapprovals" || $pagetype == "ApprovalPage") echo "class='active'";
       echo ' ><a href="../approver/approvertasklist.php">Pending Approvals ';
       if($PendingCount > 0) echo "<button class='btn btn-xs btn-info'>", $PendingCount, '</button>';
       echo '</a></li>';
