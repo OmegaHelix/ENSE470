@@ -50,8 +50,8 @@ while($row=mysqli_fetch_assoc($result)){
             echo"<td >".$row["softwareid"]. "</td>";
             echo"<td >".$row["startdate"]. "</td>";
             echo"<td >".$row["status"]. "</td>";
-            echo"<td ><button type='button' class= 'btn btn-danger'>Cancel</button></td></tr>";
         echo"<input type='hidden' name='requestid' value='".$row["id"]."'>";
+        echo"<td ><button type='submit' value='Cancel' name='Cancel'class= 'btn btn-danger'>Cancel</button></td></tr>";
 echo"</form>"; 
 }   
 ?>

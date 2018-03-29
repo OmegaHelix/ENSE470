@@ -22,7 +22,7 @@ else
     {
         $sql = "select username from users where username = '$un' and password = '$pw'"; 
         $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) == 1) // checks to see if username is already being used
+        if (mysqli_num_rows($result) >= 1) // checks to see if username is already being used
         {
             $_SESSION['UserName'] = $un;
              echo "<script type='text/javascript'>

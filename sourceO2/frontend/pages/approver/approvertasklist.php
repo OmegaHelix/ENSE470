@@ -37,7 +37,7 @@ require_once("../allusers/header.php");
 	require_once("../../../backend/dbscripts/dbconnect.php");
 
 
-	$query = " SELECT * FROM requests WHERE status = 'Approver Approved'  ";
+	$query = " SELECT * FROM requests WHERE status = 'Awaiting Approval' AND softwareid IN ($softwareids)";
 $result = mysqli_query($conn,$query);
 $count=0;
 

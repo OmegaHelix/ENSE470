@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "ense470");
+$conn = mysqli_connect("localhost", "root", "", "ENSE470");
 
 if (!$conn) { 
         die("Connection failed: " . mysqli_connect_error());
@@ -31,6 +31,7 @@ else
             alert('Login Successful".$uidd."');
             window.location.href = '../softwareuser/form.php';
             </script>";
+            exit();
         }    
     }
     echo "<script type='text/javascript'>

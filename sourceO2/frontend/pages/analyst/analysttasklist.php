@@ -36,7 +36,7 @@ while($row=mysqli_fetch_assoc($result)){
     echo"<form name='task".$count."'style='border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;' action='analysttask.php' method='post'>";
         $count++;
 		echo"<tr>";
-		echo"<td><button type='submit' class = 'btn btn-info'>Task".$count."</button></td>";
+		echo"<td><button type='submit' class = 'btn btn-info'>Task ".$count."</button></td>";
 
             echo"<td >".$row["userid"]. "</td>";
             echo"<td >".$row["softwareid"]. "</td>";
