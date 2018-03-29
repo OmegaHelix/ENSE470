@@ -11,7 +11,7 @@ else
     $pw = $_POST["Password"];
     
     $valid = true;
-    if($un == "" ||$pw == "") //checks to see if any fields are empty
+    if($un == "" || $pw == "") //checks to see if any fields are empty
     {
         echo "<script type='text/javascript'> alert('You have left some fields empty. Please try again')
         window.location.href= 'login.php';        
@@ -28,7 +28,7 @@ else
             $_SESSION['UserName'] = $un;
 
              echo "<script type='text/javascript'>
-            alert('Login Successful".$uidd."');
+            alert('Login Successful ".$un."');
             window.location.href = '../softwareuser/form.php';
             </script>";
             exit();
