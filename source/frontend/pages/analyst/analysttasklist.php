@@ -15,7 +15,7 @@ require_once("../allusers/header.php");
  <table  class='text-center table table-striped table-hover'>
     <thead class= "thead thead-light">
         <tr class="text-center">
-            <th class="text-center">Task #</th>
+            <th class="text-center">Task Details</th>
             <th class="text-center">Requester</th>
             <th class="text-center">Software Requested</th>
             <th class="text-center"></th>
@@ -39,36 +39,7 @@ require_once("../allusers/header.php");
         </tr>
         <input type="hidden" name="requestid" value="21">
     </form>    
-    <form name="task2" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities("../analyst/analysttask.php"); ?>" method="post">
-    <tr>
-        <td>
-            <button href="" class = "btn btn-info">REQ123</button>
-        </td>
-        <td>Requester</td>
-        <td>Software Requested</td>
-        <td>
-            <button class= "btn btn-success">Provision</button>
-        </td>
-        <td>
-            <button class= "btn btn-danger">Deny</button>
-        </td>
-    </tr>
-    </form>
-    <form name="task3" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities("../analyst/analysttask.php"); ?>" method="post">
-        <tr>
-            <td>
-                <button href="" class = "btn btn-info">REQ123</button>
-            </td>
-            <td>Requester</td>
-            <td>Software Requested</td>
-            <td>
-                <button class= "btn btn-success">Provision</button>
-            </td>
-            <td>
-                <button class= "btn btn-danger">Deny</button>
-            </td>
-        </tr>
-    </form>
+
     </tbody>
  <?php
  /**

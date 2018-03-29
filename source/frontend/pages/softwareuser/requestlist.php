@@ -19,7 +19,6 @@ require_once("../allusers/header.php");
         <tr class="text-center">
             <th class="text-center">Request Details</th>
             <th class="text-center">Software Requested</th>
-            <th class="text-center">Modified on</th>
             <th class="text-center">Status</th>
             <th class="text-center"></th>
 
@@ -33,7 +32,6 @@ require_once("../allusers/header.php");
                 <button type="submit" class = "text-center btn btn-info">Request 123</button>
             </td>
             <td >Software Requested</td>
-            <td >Hour Date</td>
             <td >Status</td>
             <td >
                 <button type="button" class= "btn btn-danger">Cancel</button>
@@ -41,32 +39,6 @@ require_once("../allusers/header.php");
         </tr>
         <input type="hidden" name="requestid" value="21">
     </form>    
-    <form name="task2" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities("../softwareuser/request.php"); ?>" method="post">
-    <tr>
-        <td>
-            <button href="" class = "btn btn-info">REQ123</button>
-        </td>
-        <td>Software Requested</td>
-        <td>Hour Date</td>
-        <td>Status</td>
-        <td>
-            <button class= "btn btn-danger">Cancel</button>
-        </td>
-    </tr>
-    </form>
-    <form name="task3" style="border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;" action="<?php echo htmlentities("../softwareuser/request.php"); ?>" method="post">
-        <tr>
-            <td>
-                <button href="" class = "btn btn-info">REQ123</button>
-            </td>
-            <td>Software Requested</td>
-            <td>Hour Date</td>
-            <td>Status</td>
-            <td>
-                <button class= "btn btn-danger">Cancel</button>
-            </td>
-        </tr>
-    </form>
     </tbody>
  <?php
  /**
