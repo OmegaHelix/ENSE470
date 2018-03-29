@@ -29,7 +29,7 @@ else
       $userlocation = $user['location'];
     }
   $query = "SELECT * FROM approvers WHERE userid = '$userid'";
-  $softwareids = array();
+  $softwareids = array(0);
     if($query = mysqli_query($conn, $query)){
       while($approver = mysqli_Fetch_assoc($query))
     {

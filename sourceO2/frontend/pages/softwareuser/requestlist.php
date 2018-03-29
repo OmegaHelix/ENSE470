@@ -40,14 +40,17 @@ $result = mysqli_query($conn,$query);
 $count=0;
 
 while($row=mysqli_fetch_assoc($result)){
-	
+    $swid = $row['softwareid'];
+	$q = "SELECT * FROM software WHERE `id` = '$swid'";
+    $res = mysqli_query($conn,$q);
+    $swname = mysqli_fetch_assoc($res)['name'];
     echo"<form name='task".$count."'style='border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;' action='request.php' method='post'>";
         $count++;
 		echo"<tr>";
             echo"<td>";
                 echo"<button type='submit' class = 'text-center btn btn-info'>".$row["id"]."</button>";
             echo"</td>";
-            echo"<td >".$row["softwareid"]. "</td>";
+            echo"<td >".$swname. "</td>";
             echo"<td >".$row["startdate"]. "</td>";
             echo"<td >".$row["status"]. "</td>";
         echo"<input type='hidden' name='requestid' value='".$row["id"]."'>";

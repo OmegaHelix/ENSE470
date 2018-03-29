@@ -22,7 +22,7 @@ $pagetype = "requestform";
                 exit();
             }
      else{
-    $query = " INSERT INTO requests (userid,softwareid,description) VALUES ('$userid', '$softwareid', '$description')";
+    $query = " INSERT INTO requests (userid,softwareid,description,status) VALUES ('$userid', '$softwareid', '$description','Awaiting Approval')";
     if($query = mysqli_query($conn, $query))
             header( "refresh:0;url=../softwareuser/requestlist.php");
      }

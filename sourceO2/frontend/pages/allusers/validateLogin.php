@@ -22,7 +22,7 @@ else
     {
         $sql = "select COUNT(*) from users where username = '$un' and password = '$pw'"; 
         $result = mysqli_query($conn, $sql);
-        if (mysqli_fetch_assoc($result)['COUNT(*)'] == 1) // checks to see if username is already being used
+        if (mysqli_fetch_assoc($result)['COUNT(*)'] >= 1) // checks to see if username is already being used
         {
             $_SESSION['UserName'] = $un;
 

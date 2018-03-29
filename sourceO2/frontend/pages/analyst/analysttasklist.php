@@ -32,14 +32,24 @@ $result = mysqli_query($conn,$query);
 $count=0;
 
 while($row=mysqli_fetch_assoc($result)){
-	
+    $swid = $row['softwareid'];
+    $uid = $row['userid'];
+    $q = "SELECT * FROM users WHERE `id` = '$uid'";
+    $res = mysqli_query($conn,$q);
+    $r = mysqli_fetch_assoc($res);
+    $uname = $r['firstname'] . " " . $r['lastname'];
+
+    $q = "SELECT * FROM software WHERE `id` = '$swid'";
+    $res = mysqli_query($conn,$q);
+    $swname = mysqli_fetch_assoc($res)['name'];
+
     echo"<form name='task".$count."'style='border:solid; border-color:lightblue; border-radius:25px; padding:1% 0;' action='analysttask.php' method='post'>";
         $count++;
 		echo"<tr>";
 		echo"<td><button type='submit' class = 'btn btn-info'>Task ".$count."</button></td>";
 
-            echo"<td >".$row["userid"]. "</td>";
-            echo"<td >".$row["softwareid"]. "</td>";
+            echo"<td >".$uname. "</td>";
+            echo"<td >".$swname. "</td>";
             echo"<td><button type='submit' name='Provision' value='Provision' class= 'btn btn-success'>Provision</button></td>";
             echo"<td><button type='submit' name='Deny' value='Deny'class= 'btn btn-danger'>Deny</button></td>";
         echo"<input type='hidden' name='requestid' value='".$row["id"]."'>";
