@@ -33,6 +33,8 @@ else
     if($query = mysqli_query($conn, $query)){
       while($approver = mysqli_Fetch_assoc($query))
     {
+      if( !is_array($userlocation))
+      {
       // if user has Canada domain, they have approval access over all of canada for that software.
       $userlocation = explode(',',$userlocation);
       foreach($userlocation as $userlocationelement)
@@ -42,6 +44,10 @@ else
         array_push($softwareids, $approver['softwareid']);   
       }
     }
+  }
+  else
+  array_push($softwareids, $approver['softwareid']); 
+
   }
 }
   $query = "SELECT COUNT(*) FROM requests WHERE userid = '$userid'";
