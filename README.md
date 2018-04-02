@@ -1,6 +1,9 @@
 # ENSE470 group project
 Using agile planning and software development strategies to deliver a solution for HELL's software license management process.
 
+Link: <a href="http://www2.cs.uregina.ca/~fishe29d/sourceO2/frontend/pages/allusers/login.php"> Login Page </a>
+http://www2.cs.uregina.ca/~fishe29d/sourceO2/frontend/pages/allusers/login.php
+
 ## Project Map
 - [x] <a href="https://github.com/OmegaHelix/ENSE470/blob/master/Milestone1/ENSE470%20Milestone%201.pptx">Milestone 1 Report Out</a>
   - <a href="https://github.com/OmegaHelix/ENSE470/blob/master/Milestone1/Current%20VSM.pdf">Current State Value Stream Map </a>
