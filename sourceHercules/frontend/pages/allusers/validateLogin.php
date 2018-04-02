@@ -19,7 +19,7 @@ else
     if($valid)
     {
        $query = "SELECT * FROM users WHERE username = '$un' AND password = '$pw'";
-        $result = $conn->query($query);
+        $result = query($conn, $query);
         if (mysqli_num_rows($result) >= 1) // checks to see if username is already being used
         {   
             $_SESSION['UserName'] = $un;
