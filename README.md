@@ -28,4 +28,4 @@ Using agile planning and software development strategies to deliver a solution f
 - 4th year Software Systems Engineering undergraduate student at the University of Regina
 #### <a href="https://github.com/connor-meredith"> Connor Meredith </a>
 #### <a href="https://github.com/oscar666666"> Chengyu Lou </a>
-- 3rd year, don't know his own future. no idea what he is doing. covfefe
+- 3rd year, covfefe
